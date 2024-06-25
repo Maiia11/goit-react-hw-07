@@ -2,23 +2,25 @@ import {  useDispatch, useSelector } from "react-redux";
 import Contact from "../Contact/Contact"
 import css from "./ContactList.module.css"
 import { fetchContacts } from "../../redux/contactsOps.js";
-import { selectContacts } from "../../redux/selectors";
+import { filteredContacts, selectContacts } from "../../redux/selectors";
 import { useEffect } from "react";
 
 const ContactList = () => {
   const dispatch = useDispatch()
   const contacts = useSelector(selectContacts);
+  const filterContacts = useSelector(filteredContacts);
+  console.log(filterContacts);
   
   useEffect(() => {
-    if (contacts !== 0) {
+    if (filterContacts !== 0) {
       dispatch(fetchContacts())
     }
-  }, [contacts, dispatch])
+  }, [filterContacts, dispatch])
  
   
   return (
     <ul className={css.container}>
-      {contacts.map(({ id, name, number }) => (
+      {filterContacts.map(({ id, name, number }) => (
             <li key={id}>
               <Contact name={name} number={number} id={id} />
         </li>))}
