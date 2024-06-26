@@ -6,7 +6,7 @@ import SearchBox from '../SearchBox/SearchBox'
 import { useDispatch, useSelector } from 'react-redux'
 import { filteredContacts, selectError, selectLoading } from '../../redux/selectors'
 import { useEffect } from 'react'
-import { fetchContacts } from '../../redux/contactsOps.js'
+import { fetchContacts } from '../../redux/contactsOps'
 
 function App() {
   const dispatch = useDispatch();

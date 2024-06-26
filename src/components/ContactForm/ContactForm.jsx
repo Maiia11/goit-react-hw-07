@@ -3,7 +3,7 @@ import { useId } from "react";
 import * as Yup from 'yup';
 import css from "./ContactForm.module.css"
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps.js";
+import { addContact } from "../../redux/contactsOps";
 
 const contactSchema = Yup.object().shape({
   name: Yup.string().min(3, "Too short").max(50, "Too long").required('required'),
