@@ -39,7 +39,7 @@ const contactsSlice = createSlice({
         })
         .addCase(deleteContact.fulfilled, (state, action) => {
             state.loading = false;
-            const index = state.items.findIndex(task => task.id === action.payload);
+            const index = state.items.findIndex(task => task.id === action.payload.id);
             state.items.splice(index, 1);
            
         })
