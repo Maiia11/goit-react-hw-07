@@ -4,17 +4,13 @@ import './App.css'
 import ContactForm from '../ContactForm/ContactForm'
 import SearchBox from '../SearchBox/SearchBox'
 import { useDispatch, useSelector } from 'react-redux'
-import { filteredContacts, selectContacts, selectError, selectLoading } from '../../redux/selectors'
+import { filteredContacts, selectError, selectLoading } from '../../redux/selectors'
 import { useEffect } from 'react'
 import { fetchContacts } from '../../redux/contactsOps.js'
 
 function App() {
-  const dispatch = useDispatch()
-  
-  const filterContacts = useSelector(filteredContacts);
-  console.log(filterContacts);
-
-
+  const dispatch = useDispatch();
+   const contacts = useSelector(filteredContacts);
   const loading = useSelector(selectLoading);
   const error = useSelector(selectError);
   
@@ -32,7 +28,7 @@ function App() {
       <SearchBox />
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <ContactList contacts={filterContacts} />
+      <ContactList contacts={contacts} />
 </div>
   )
 }
